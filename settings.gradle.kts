@@ -6,13 +6,7 @@ pluginManagement {
     }
 }
 
-//dependencyResolutionManagement {
-//    repositories {
-//        mavenCentral()
-//        google()
-//    }
-//}
-
 rootProject.name = "team-finder"
 
 include(":database")
+include(":web", ":web:api", ":web:jwt", ":web:schema", ":web:security", ":web:security:validator")

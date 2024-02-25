@@ -13,6 +13,7 @@ graphql-tools-version = "13.0.3"
 graphql-extended-validation-version = "21.0"
 reactive-streams-version = "1.0.4"
 
+
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin-version" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin-version" }
@@ -39,7 +40,6 @@ graphql-kickstart-starer = { module = "com.graphql-java-kickstart:graphql-spring
 graphql-kickstart-tools = { module = "com.graphql-java-kickstart:graphql-java-tools", version.ref = "graphql-tools-version" }
 graphql-validation = { module = "com.graphql-java:graphql-java-extended-validation", version.ref = "graphql-extended-validation-version" }
 reactive-streams = { module = "org.reactivestreams:reactive-streams", version.ref = "reactive-streams-version" }
-
 
 jackson-module = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-version" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson-version" }
