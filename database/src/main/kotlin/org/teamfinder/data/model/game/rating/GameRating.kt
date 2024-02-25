@@ -3,6 +3,7 @@ package org.teamfinder.data.model.game.rating
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
+import org.teamfinder.data.entity.game.rating.GameRatings
 import org.teamfinder.data.model.account.Account
 import org.teamfinder.data.model.game.Game
 

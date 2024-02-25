@@ -6,6 +6,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.teamfinder.data.entity.channel.Channels
 import org.teamfinder.data.model.channel.meta.ChannelAdmissionPolicy
 import org.teamfinder.data.model.channel.meta.ChannelCategory
+import org.teamfinder.data.model.channel.meta.ChannelVisibility
 
 class Channel(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<Channel>(Channels)
