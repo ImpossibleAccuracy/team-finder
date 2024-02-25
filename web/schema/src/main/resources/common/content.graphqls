@@ -1,0 +1,28 @@
+interface ContentItem {
+    id: ID!
+}
+
+type ContentItemText implements ContentItem{
+    id: ID!
+    text: String!
+}
+
+type ContentItemQuote implements ContentItem {
+    id: ID!
+    text: String!
+}
+
+type ContentItemInvite implements ContentItem {
+    id: ID!
+    invite: ChannelInvite!
+}
+
+type ContentItemMedia implements ContentItem {
+    id: ID!
+    media: [MediaCollectionItem!]!
+}
+
+type ContentItemFile implements ContentItem {
+    id: ID!
+    file: [String!]!
+}

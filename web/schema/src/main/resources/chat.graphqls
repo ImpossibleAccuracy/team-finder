@@ -1,0 +1,19 @@
+# Filters
+
+input ChatFilter {
+    title: String
+    createdAt: DateTimeRange
+    isGroup: Boolean
+    hasLogo: Boolean
+    membersIn: [ID!]
+}
+
+# Models
+
+type Chat {
+    id: ID!
+    title: String!
+    description: String
+    isGroup: Boolean!
+    logo: String @resolve
+}

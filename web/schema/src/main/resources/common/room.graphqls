@@ -1,0 +1,17 @@
+type Message {
+    id: ID!
+    createdAt: DateTime!
+    room: Room! @resolve
+    creator: Account! @resolve
+    parent: Message @resolve
+    content: [ContentItem!]!
+}
+
+type Room {
+    id: ID!
+    createdAt: DateTime!
+    type: String!
+    creator: Account! @resolve
+    members: [Account!]! @resolve
+    messages: [Message!]! @resolve
+}

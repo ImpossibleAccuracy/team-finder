@@ -1,0 +1,6 @@
+type MediaCollectionItem {
+    order: Int!
+    internalURI: String
+    externalURI: String
+    externalType: String
+}

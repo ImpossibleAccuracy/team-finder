@@ -1,0 +1,31 @@
+# Filters
+
+enum CommentDestinationType {
+    Game
+    Article
+}
+
+input CommentFilter {
+    createdAt: DateTimeRange
+    content: String
+    rating: IntRange
+    creatorIn: [ID!]
+    parentIn: [ID!]
+    destinationIn: [ID!]
+    destinationTypeIn: [CommentDestinationType!]
+}
+
+# Models
+
+union CommentDestination = Game | Article
+
+type Comment {
+    ID: ID!
+    createdAt: DateTime!
+    account: Account! @resolve
+    content: String!
+
+    destination: CommentDestination! @resolve
+    parentComment: Comment @resolve
+    rating: Int! @resolve
+}

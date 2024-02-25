@@ -1,0 +1,35 @@
+enum SortType {
+    ASC,
+    DESC
+}
+
+input Sort {
+    name: String! @Size(min: 2, max: 100)
+    type: SortType = ASC
+}
+
+input Pagination {
+    limit: Int! @Range(min: 1, max: 500)
+    offset: Int! = 0 @Min(value: 0)
+    sort: Sort
+}
+
+input IntRange {
+    from: Int
+    to: Int
+}
+
+input FloatRange {
+    from: Int
+    to: Int
+}
+
+input DateRange {
+    from: Date
+    to: Date
+}
+
+input DateTimeRange {
+    from: DateTime
+    to: DateTime
+}

@@ -1,0 +1,41 @@
+# Filters
+
+input ArticleFilter {
+    title: String
+    createdAt: DateTimeRange
+    creatorIn: [ID!]
+    attachedGameIn: [ID!]
+    hasPreview: Boolean
+    timeToRead: IntRange
+    rating: FloatRange
+}
+
+# Models
+
+type Article {
+    id: ID!
+    createdAt: DateTime!
+    title: String!
+    creator: Account! @resolve
+
+    info: ArticleInfo! @resolve
+    content: [ContentItem!]! @resolve
+    rating: Float! @resolve
+
+    notes: [ArticleNote!]! @resolve
+    myNote: ArticleNote @resolve
+}
+
+type ArticleInfo {
+    attachedGame: Game
+    preview: String!
+    shortDescription: String!
+    longDescription: String!
+    timeToRead: Int!
+}
+
+type ArticleNote {
+    article: Article! @resolve
+    account: Account! @resolve
+    text: String!
+}

@@ -1,0 +1,31 @@
+type Query {
+    account(id: ID!): Account
+    accounts(filter: AccountFilter, pagination: Pagination): [Account!]!
+
+    article(id: ID!): Article
+    articles(filter: ArticleFilter, pagination: Pagination): [Article!]!
+
+    game(id: ID!): Game
+    games(filter: GameFilter, pagination: Pagination): [Game!]!
+
+    genre(id: ID!): Genre
+    genres(filter: GenreFilter, pagination: Pagination): [Genre!]!
+
+    team(id: ID!): Team
+    teams(filter: TeamFilter, pagination: Pagination): [Team!]!
+
+    teamRequest(id: ID!): TeamRequest
+    teamRequests(filter: TeamRequestFilter, pagination: Pagination): [TeamRequest!]!
+
+    channel(id: ID!): Channel
+    channels(filter: ChannelFilter, pagination: Pagination): [Channel!]!
+
+    invite(id: ID!): ChannelInvite
+    invites(filter: ChannelInviteFilter, pagination: Pagination): [ChannelInvite!]!
+
+    chat(id: ID!): Chat
+    chats(filter: ChatFilter, pagination: Pagination): [Chat!]!
+
+    comment(id: ID!): Comment
+    comments(filter: CommentFilter, pagination: Pagination): [Comment!]!
+}

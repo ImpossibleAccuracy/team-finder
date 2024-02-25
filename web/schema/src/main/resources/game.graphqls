@@ -1,0 +1,46 @@
+# Filters
+
+input GameFilter {
+    createdAt: DateTimeRange
+    title: String
+    creatorIn: [ID!]
+    creatorStudioName: String
+    isValidated: Boolean
+    validatedByIn: [ID!]
+    genresIn: [ID!]
+    rating: FloatRange
+}
+
+input GenreFilter {
+    title: String
+}
+
+# Models
+
+type Game {
+    id: ID!
+    createdAt: DateTime!
+    creator: Account! @resolve
+    title: String!
+    description: String!
+    creatorStudioName: String!
+    media: [MediaCollectionItem!]! @resolve
+
+    isValidated: Boolean!
+    validatedBy: Account @resolve
+
+    rating: Float! @resolve
+    info: [GameInfoItem!]! @resolve
+    genres: [Genre!]! @resolve
+    articles: [Article!]! @resolve
+}
+
+type GameInfoItem {
+    type: String!
+    value: String!
+}
+
+type Genre {
+    id: ID!
+    title: String!
+}

@@ -1,0 +1,38 @@
+# Filters
+
+input AccountFilter {
+    email: String
+    username: String
+    createdAt: DateTimeRange
+}
+
+# Models
+
+type Account {
+    id: ID!
+    createdAt: DateTime!
+    email: String!
+    personal: AccountPersonal! @resolve
+
+    subscribers: [Account!]! @resolve
+    relations: [AccountRelationship!]! @resolve
+
+    socials: [Social!]! @resolve
+    articles: [Article!]! @resolve
+    teamRequests: [TeamRequest!]! @resolve
+    comments: [Comment!]! @resolve
+}
+
+type AccountPersonal {
+    username: String!
+    avatar: String @resolve
+    background: String @resolve
+    status: String! @resolve
+    aboutMeText: String!
+}
+
+type AccountRelationship {
+    createdAt: DateTime!
+    account: Account!
+    type: String!
+}

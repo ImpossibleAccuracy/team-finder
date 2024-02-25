@@ -1,0 +1,77 @@
+# Filters
+
+input ChannelFilter {
+    createdAt: DateTimeRange
+    title: String
+    category: String
+    visibility: String
+    admissionPolicy: String
+    attachedGamesIn: [ID!]
+    membersIn: [ID!]
+    membersCount: IntRange
+    hasLogo: Boolean
+}
+
+input ChannelInviteFilter {
+    createdAt: DateTimeRange
+    accountIn: [ID!]
+    channelIn: [ID!]
+    expiredAt: DateTimeRange
+}
+
+# Models
+
+type Channel {
+    id: ID!
+    createdAt: DateTime!
+    title: String!
+    category: String!
+    visibility: String!
+    admissionPolicy: String!
+
+    info: ChannelInfo! @resolve
+    socials: [Social!]! @resolve
+    attachedGames: [Game!] @resolve
+
+    members: [ChannelMember!]! @resolve
+
+    invites: [ChannelInvite!]! @resolve
+
+    threads: [ChannelThread!]! @resolve
+}
+
+type ChannelInfo {
+    description: String!
+    logo: String! @resolve
+    background: String! @resolve
+}
+
+type ChannelMember {
+    createdAt: DateTime!
+    account: Account!
+    role: String
+}
+
+type ChannelInvite {
+    id: ID!
+    createdAt: DateTime!
+    channel: Channel! @resolve
+    account: Account! @resolve
+    expiredAt: DateTime
+}
+
+type ChannelThread {
+    id: ID!
+    createdAt: DateTime!
+    title: String!
+    channel: Channel! @resolve
+    room: Room! @resolve
+
+    isSecured: Boolean!
+    channelRules: [ChannelThreadRule!] @resolve
+}
+
+type ChannelThreadRule {
+    role: String!
+    isAllow: Boolean!
+}

@@ -1,0 +1,44 @@
+# Filters
+
+input TeamFilter {
+    createdAt: DateTimeRange
+    title: String
+    creatorIn: [ID!]
+    type: String
+    status: String
+    totalPersonAmount: IntRange
+    attachedGamesIn: [ID!]
+    requestedByIn: [ID!]
+    requestsCount: IntRange
+}
+
+input TeamRequestFilter {
+    createdAt: DateTimeRange
+    accountIn: [ID!]
+    teamIn: [ID!]
+    status: String
+}
+
+# Models
+
+type Team {
+    id: ID!
+    createdAt: DateTime!
+    creator: Account! @resolve
+    title: String!
+    description: String!
+    type: String!
+    status: String!
+    totalPersonAmount: Int
+
+    attachedGames: [Game!]! @resolve
+    requests: [TeamRequest!]! @resolve
+}
+
+type TeamRequest {
+    id: ID!
+    createdAt: DateTime!
+    account: Account! @resolve
+    team: Team! @resolve
+    status: String!
+}
