@@ -1,0 +1,67 @@
+#logging:
+#  level:
+#    com.powerplace: trace
+#    org.springframework: error
+#    org.hibernate: error
+#    graphql: error
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: always
+    include-exception: true
+
+graphql:
+  graphiql:
+    enabled: true
+    props:
+      variables:
+        header-editor-enabled: true
+  servlet:
+    exception-handlers-enabled: true
+    max-query-depth: 10
+  playground:
+    enabled: true
+    headers:
+      Authorization: ${PLAYGROUND_AUTH_TOKEN}
+
+spring:
+  graphql:
+    cors:
+      allow-credentials: true
+      allowed-origins:
+        - ${WEB_APP_ORIGIN}
+      allowed-methods:
+        - OPTIONS
+        - GET
+        - POST
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+  security:
+    user:
+      name: ${SECURITY_USER}
+      password: ${SECURITY_PASSWORD}
+    filter:
+      order: 10
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.MySQLDialect
+
+app:
+  token:
+    expirationTime: ${TOKEN_EXPIRATION_TIME}
+    secret: ${TOKEN_SECRET_KEY}
+  pagination:
+    defaultLimit: 30
+  event-registration:
+    blockTimeHour: 2
