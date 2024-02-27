@@ -8,5 +8,5 @@ pluginManagement {
 
 rootProject.name = "team-finder"
 
-include(":database")
+include(":database", ":database:exposed", ":database:jpa")
 include(":web", ":web:api", ":web:jwt", ":web:schema", ":web:security", ":web:security:validator")

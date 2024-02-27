@@ -1,0 +1,25 @@
+package org.teamfinder.data.channel.meta
+
+import jakarta.persistence.*
+import org.teamfinder.data.channel.keys.ChannelSocialPK
+import org.teamfinder.data.channel.Channel
+import org.teamfinder.data.social.Social
+
+@Entity
+class ChannelSocial(
+    @EmbeddedId
+    var pk: ChannelSocialPK,
+
+    @Column(name = "Value", nullable = false)
+    var value: String,
+
+    @MapsId("channelId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channelID", nullable = false)
+    var channel: Channel,
+
+    @MapsId("socialId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "socialID", nullable = false)
+    var social: Social,
+)
