@@ -2,13 +2,11 @@ package org.teamfinder.data.comment
 
 import jakarta.persistence.*
 import org.teamfinder.data.account.Account
+import org.teamfinder.data.base.ref.RefEntity
 import org.teamfinder.data.comment.keys.CommentRatingPK
 
 @Entity
 class CommentRating(
-    @EmbeddedId
-    var pk: CommentRatingPK,
-
     @MapsId("commentId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "commentID", nullable = false)
@@ -21,4 +19,4 @@ class CommentRating(
 
     @Column(name = "createdAt", nullable = false)
     var isPositive: Boolean,
-)
+) : RefEntity<CommentRatingPK>()

@@ -1,14 +1,12 @@
 package org.teamfinder.data.game.meta
 
 import jakarta.persistence.*
+import org.teamfinder.data.base.ref.RefEntity
 import org.teamfinder.data.game.Game
 import org.teamfinder.data.game.keys.GameDataItemPK
 
 @Entity
 class GameDataItem(
-    @EmbeddedId
-    var pk: GameDataItemPK,
-
     @MapsId("gameId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "GameID", nullable = false)
@@ -21,4 +19,4 @@ class GameDataItem(
 
     @Column(name = "Value", nullable = false)
     var value: String,
-)
+) : RefEntity<GameDataItemPK>()

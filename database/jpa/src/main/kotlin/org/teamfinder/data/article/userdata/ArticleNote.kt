@@ -4,12 +4,10 @@ import jakarta.persistence.*
 import org.teamfinder.data.account.Account
 import org.teamfinder.data.article.Article
 import org.teamfinder.data.article.keys.ArticleNotePK
+import org.teamfinder.data.base.ref.RefEntity
 
 @Entity
 class ArticleNote(
-    @EmbeddedId
-    var pk: ArticleNotePK,
-
     @MapsId("articleId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ArticleID", nullable = false)
@@ -22,4 +20,4 @@ class ArticleNote(
 
     @Column(name = "Text", nullable = false, columnDefinition = "text")
     var text: String,
-)
+) : RefEntity<ArticleNotePK>()

@@ -3,16 +3,10 @@ package org.teamfinder.data.account.data
 import jakarta.persistence.*
 import org.teamfinder.data.account.Account
 import org.teamfinder.data.account.keys.AccountRelationshipPK
-import java.time.OffsetDateTime
+import org.teamfinder.data.base.ref.RefAuditEntity
 
 @Entity
 class AccountRelationship(
-    @EmbeddedId
-    var pk: AccountRelationshipPK,
-
-    @Column(name = "CreatedAt", nullable = false)
-    var createdAt: OffsetDateTime,
-
     @Column(name = "CreatorFirst", nullable = false)
     var creatorFirst: Boolean,
 
@@ -29,4 +23,4 @@ class AccountRelationship(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TypeID", nullable = false)
     var type: AccountRelationshipType,
-)
+) : RefAuditEntity<AccountRelationshipPK>()

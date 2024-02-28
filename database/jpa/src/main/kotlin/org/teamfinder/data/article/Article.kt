@@ -2,24 +2,10 @@ package org.teamfinder.data.article
 
 import jakarta.persistence.*
 import org.teamfinder.data.account.Account
-import java.time.OffsetDateTime
+import org.teamfinder.data.base.BaseAuditEntity
 
 @Entity
 class Article(
-    @Id
-    @Column(name = "ID", nullable = false, updatable = false)
-    @SequenceGenerator(
-        name = "primary_sequence",
-        sequenceName = "primary_sequence",
-        allocationSize = 1,
-        initialValue = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
-    var id: Long,
-
-    @Column(name = "CreatedAt", nullable = false)
-    var createdAt: OffsetDateTime,
-
     @Column(name = "Title", nullable = false)
     var title: String,
 
@@ -30,4 +16,4 @@ class Article(
     @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     var info: ArticleInfo
-)
+) : BaseAuditEntity<Long>()

@@ -7,12 +7,21 @@ plugins {
 
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.kotlin.jpa)
+    alias(libs.plugins.kotlin.allopen)
+}
+
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
 }
 
 group = "org.teamfinder.data"
 version = "1.0-SNAPSHOT"
 
 dependencies {
+    implementation(libs.kotlin.datetime)
+
     implementation(libs.spring.starter.jpa)
     implementation(libs.mysql.connector)
 

@@ -2,17 +2,11 @@ package org.teamfinder.data.common.room
 
 import jakarta.persistence.*
 import org.teamfinder.data.account.Account
+import org.teamfinder.data.base.ref.RefAuditEntity
 import org.teamfinder.data.common.room.keys.RoomMemberPK
-import java.time.OffsetDateTime
 
 @Entity
 class RoomMember(
-    @EmbeddedId
-    var pk: RoomMemberPK,
-
-    @Column(name = "CreatedAt", nullable = false)
-    var createdAt: OffsetDateTime,
-
     @Column(name = "IsAdmin", nullable = false)
     var isAdmin: Boolean,
 
@@ -25,4 +19,4 @@ class RoomMember(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MemberID", nullable = false)
     var member: Account,
-)
+) : RefAuditEntity<RoomMemberPK>()

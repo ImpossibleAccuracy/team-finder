@@ -2,18 +2,12 @@ package org.teamfinder.data.channel.member
 
 import jakarta.persistence.*
 import org.teamfinder.data.account.Account
+import org.teamfinder.data.base.ref.RefAuditEntity
 import org.teamfinder.data.channel.Channel
 import org.teamfinder.data.channel.keys.ChannelMemberPK
-import java.time.OffsetDateTime
 
 @Entity
 class ChannelMember(
-    @EmbeddedId
-    var pk: ChannelMemberPK,
-
-    @Column(name = "CreatedAt", nullable = false)
-    var createdAt: OffsetDateTime,
-
     @MapsId("channelId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ChannelID", nullable = false)
@@ -27,4 +21,4 @@ class ChannelMember(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RoleID")
     var role: ChannelMemberRole,
-)
+) : RefAuditEntity<ChannelMemberPK>()

@@ -1,25 +1,14 @@
 package org.teamfinder.data.common.room
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import org.teamfinder.data.account.Account
-import java.time.OffsetDateTime
+import org.teamfinder.data.base.BaseAuditEntity
 
 @Entity
 class Room(
-    @Id
-    @Column(name = "ID", nullable = false, updatable = false)
-    @SequenceGenerator(
-        name = "primary_sequence",
-        sequenceName = "primary_sequence",
-        allocationSize = 1,
-        initialValue = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
-    var id: Long,
-
-    @Column(name = "CreatedAt", nullable = false)
-    var createdAt: OffsetDateTime,
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TypeID", nullable = false)
     var type: RoomType,
@@ -27,4 +16,4 @@ class Room(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CreatorID", nullable = false)
     var creator: Account,
-)
+) : BaseAuditEntity<Long>()
