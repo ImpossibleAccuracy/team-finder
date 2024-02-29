@@ -10,10 +10,14 @@ rootProject.name = "team-finder"
 
 include(
     ":database",
-//    ":database:exposed",
-//    ":database:jooq",
-//    ":database:jooq:custom-generation-strategy",
-    ":database:jpa",
-    ":database:jpa:repository"
+    ":database:repository"
 )
-include(":web", ":web:api", ":web:jwt", ":web:schema", ":web:security", ":web:security:validator")
+
+include(
+    ":web",
+    ":web:api",
+    ":web:jwt",
+    ":web:schema",
+    ":web:security",
+    ":web:security:validator"
+)

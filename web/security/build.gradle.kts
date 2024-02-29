@@ -7,7 +7,7 @@ version = "1.0-SNAPSHOT"
 
 dependencies {
     implementation(project(":web:jwt"))
-    implementation(project(":database:jpa"))
+    implementation(project(":database"))
 
     // COROUTINES DEPENDENCIES
     implementation(libs.kotlin.coroutine.core)

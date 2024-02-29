@@ -11,8 +11,8 @@ group = "org.teamfinder.api"
 version = "1.0-SNAPSHOT"
 
 dependencies {
-    implementation(project(":database:jpa"))
-    implementation(project(":database:jpa:repository"))
+    implementation(project(":database"))
+    implementation(project(":database:repository"))
     implementation(project(":web:jwt"))
     implementation(project(":web:schema"))
     implementation(project(":web:security"))
