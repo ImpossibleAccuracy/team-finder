@@ -7,13 +7,17 @@ version = "1.0-SNAPSHOT"
 
 dependencies {
     implementation(project(":web:jwt"))
-    implementation(project(":database"))
+    implementation(project(":database:jpa"))
 
-    implementation(libs.spring.starer.web)
-    implementation(libs.spring.starer.security)
+    // COROUTINES DEPENDENCIES
+    implementation(libs.kotlin.coroutine.core)
+    implementation(libs.kotlin.coroutine.reactive)
+    implementation(libs.kotlin.coroutine.reactor)
 
-    implementation(libs.exposed.core)
-    implementation(libs.exposed.dao)
+    // SPRING DEPENDENCIES
+    implementation(libs.spring.starter.web)
+    implementation(libs.spring.starter.security)
 
-    implementation(libs.graphql.kickstart.starer)
+    // GRAPHQL DEPENDENCIES
+    implementation(libs.graphql.kickstart.starter)
 }

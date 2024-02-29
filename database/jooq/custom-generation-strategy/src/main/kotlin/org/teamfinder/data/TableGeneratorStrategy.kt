@@ -1,26 +1,33 @@
 package org.teamfinder.data
 
+import org.jooq.codegen.DefaultGeneratorStrategy
 import org.jooq.codegen.GeneratorStrategy
-import org.jooq.codegen.KeepNamesGeneratorStrategy
 import org.jooq.meta.Definition
 import org.jooq.meta.TableDefinition
 
-
-class TableGeneratorStrategy : KeepNamesGeneratorStrategy() {
+//                             KeepNamesGeneratorStrategy
+//                             DefaultGeneratorStrategy
+class TableGeneratorStrategy : DefaultGeneratorStrategy() {
     override fun getJavaClassName(definition: Definition, mode: GeneratorStrategy.Mode): String {
-        var tableName = super.getJavaClassName(definition, mode)
+        var name = super.getJavaClassName(definition, mode)
 
         if (mode == GeneratorStrategy.Mode.DEFAULT && definition is TableDefinition) {
-            if (isRefTable(tableName)) {
-                tableName += "FK"
+            if (isRefTable(name)) {
+                name += "FK"
             }
 
-            tableName += "Table"
+            name += "Table"
         }
 
-        tableName = tableName.replace("_", "")
+        name = name.replace("_", "")
 
-        return tableName
+//        if (mode == GeneratorStrategy.Mode.POJO && definition is ColumnDefinition) {
+//            name = name.replaceFirstChar {
+//                it.lowercaseChar()
+//            }
+//        }
+
+        return name
     }
 
     private fun isRefTable(tableName: String) =

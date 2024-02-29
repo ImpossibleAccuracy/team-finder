@@ -9,6 +9,11 @@ fun createContextBuilder(
 ): GraphQLSpringWebfluxContextBuilder =
     SecuredContextBuilder { jwt ->
         authService.authUserByRequestToken(jwt)?.let {
-            AccountAuthentication(it, jwt, null)
+            AccountAuthentication(
+                it,
+                buildAuthoritiesRaw(it),
+                jwt,
+                null
+            )
         }
     }

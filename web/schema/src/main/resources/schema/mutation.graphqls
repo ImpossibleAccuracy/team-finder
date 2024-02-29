@@ -1,0 +1,13 @@
+type Mutation {
+    isEmailUsed(email: String! @Size(min: 3, max: 255)): Boolean!
+
+    signIn(
+        email: String! @Size(min: 3, max: 255),
+        password: String! @Size(min: 8, max: 255)
+    ): AuthResponse!
+
+    signUp(
+        email: String! @Size(min: 3, max: 255),
+        password: String! @Size(min: 8, max: 255)
+    ): AuthResponse!
+}

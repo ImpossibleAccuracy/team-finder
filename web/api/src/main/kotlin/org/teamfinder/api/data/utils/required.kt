@@ -1,7 +1,7 @@
-package org.teamfinder.api.data.model
+package org.teamfinder.api.data.utils
 
 import org.teamfinder.api.data.exception.items.ResourceNotFoundException
-import org.teamfinder.data.model.account.Account
+import org.teamfinder.data.account.Account
 import java.util.*
 
 fun <T> Optional<T>.required(message: String): T =

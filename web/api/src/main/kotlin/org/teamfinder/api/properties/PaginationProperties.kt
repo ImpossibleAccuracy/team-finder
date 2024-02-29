@@ -1,4 +1,4 @@
-package org.teamfinder.api.utils.pagination
+package org.teamfinder.api.properties
 
 import jakarta.validation.constraints.Min
 import org.springframework.boot.context.properties.ConfigurationProperties

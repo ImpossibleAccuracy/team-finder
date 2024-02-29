@@ -12,7 +12,7 @@ class TokenServiceImpl(
     private val tokenProperties: TokenProperties,
     private val jwtUtils: JwtUtils
 ) : TokenService {
-    override suspend fun extractEmail(token: String) =
+    override suspend fun extractSubject(token: String) =
         withContext(Dispatchers.Default) {
             jwtUtils.parseSubject(token)
         }

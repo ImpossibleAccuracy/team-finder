@@ -8,7 +8,7 @@ input Sort {
     type: SortType = ASC
 }
 
-input Pagination {
+input Pageable {
     limit: Int! @Range(min: 1, max: 500)
     offset: Int! = 0 @Min(value: 0)
     sort: Sort

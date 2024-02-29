@@ -5,6 +5,13 @@
 #    org.hibernate: error
 #    graphql: error
 
+app:
+  token:
+    expirationTime: ${TOKEN_EXPIRATION_TIME}
+    secret: ${TOKEN_SECRET_KEY}
+  pagination:
+    defaultLimit: 30
+
 server:
   port: ${SERVER_PORT:8080}
   error:
@@ -26,6 +33,8 @@ graphql:
       Authorization: ${PLAYGROUND_AUTH_TOKEN}
 
 spring:
+#  exposed:
+#    show-sql: true
   graphql:
     cors:
       allow-credentials: true
@@ -56,12 +65,3 @@ spring:
       hibernate:
         format_sql: false
         dialect: org.hibernate.dialect.MySQLDialect
-
-app:
-  token:
-    expirationTime: ${TOKEN_EXPIRATION_TIME}
-    secret: ${TOKEN_SECRET_KEY}
-  pagination:
-    defaultLimit: 30
-  event-registration:
-    blockTimeHour: 2

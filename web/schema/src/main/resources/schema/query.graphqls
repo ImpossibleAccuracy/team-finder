@@ -1,31 +1,31 @@
 type Query {
     account(id: ID!): Account
-    accounts(filter: AccountFilter, pagination: Pagination): [Account!]!
+    accounts(filter: AccountFilter, pageable: Pageable): [Account!]!
 
     article(id: ID!): Article
-    articles(filter: ArticleFilter, pagination: Pagination): [Article!]!
+    articles(filter: ArticleFilter, pageable: Pageable): [Article!]!
 
     game(id: ID!): Game
-    games(filter: GameFilter, pagination: Pagination): [Game!]!
+    games(filter: GameFilter, pageable: Pageable): [Game!]!
 
     genre(id: ID!): Genre
-    genres(filter: GenreFilter, pagination: Pagination): [Genre!]!
+    genres(filter: GenreFilter, pageable: Pageable): [Genre!]!
 
     team(id: ID!): Team
-    teams(filter: TeamFilter, pagination: Pagination): [Team!]!
+    teams(filter: TeamFilter, pageable: Pageable): [Team!]!
 
     teamRequest(id: ID!): TeamRequest
-    teamRequests(filter: TeamRequestFilter, pagination: Pagination): [TeamRequest!]!
+    teamRequests(filter: TeamRequestFilter, pageable: Pageable): [TeamRequest!]!
 
     channel(id: ID!): Channel
-    channels(filter: ChannelFilter, pagination: Pagination): [Channel!]!
+    channels(filter: ChannelFilter, pageable: Pageable): [Channel!]!
 
     invite(id: ID!): ChannelInvite
-    invites(filter: ChannelInviteFilter, pagination: Pagination): [ChannelInvite!]!
+    invites(filter: ChannelInviteFilter, pageable: Pageable): [ChannelInvite!]!
 
     chat(id: ID!): Chat
-    chats(filter: ChatFilter, pagination: Pagination): [Chat!]!
+    chats(filter: ChatFilter, pageable: Pageable): [Chat!]!
 
     comment(id: ID!): Comment
-    comments(filter: CommentFilter, pagination: Pagination): [Comment!]!
+    comments(filter: CommentFilter, pageable: Pageable): [Comment!]!
 }

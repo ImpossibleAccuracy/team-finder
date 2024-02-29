@@ -8,19 +8,11 @@ import graphql.schema.*
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.*
 
-
 @Configuration
 class DateScalarConfiguration {
-    companion object {
-        private val dateTypes = arrayOf(
-            DateTimeFormatter.ISO_LOCAL_DATE,
-        )
-    }
-
     @Bean
     fun dateScalar(): GraphQLScalarType =
         GraphQLScalarType.newScalar()
@@ -55,14 +47,10 @@ class DateScalarConfiguration {
                 }
             }).build()
 
-    private fun parseString(value: String): LocalDate? {
-        for (format in dateTypes) {
-            try {
-                return LocalDate.parse(value, format)
-            } catch (_: DateTimeParseException) {
-            }
+    private fun parseString(value: String): LocalDate? =
+        try {
+            LocalDate.parse(value)
+        } catch (_: DateTimeParseException) {
+            null
         }
-
-        return null
-    }
 }

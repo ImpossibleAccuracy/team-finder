@@ -10,9 +10,9 @@ rootProject.name = "team-finder"
 
 include(
     ":database",
-    ":database:exposed",
-    ":database:jooq",
-    ":database:jooq:custom-generation-strategy",
+//    ":database:exposed",
+//    ":database:jooq",
+//    ":database:jooq:custom-generation-strategy",
     ":database:jpa",
     ":database:jpa:repository"
 )

@@ -36,6 +36,7 @@ jooq {
                         isImmutablePojos = true
                         isPojosEqualsAndHashCode = true
                         isPojosAsKotlinDataClasses = true
+                        isKotlinNotNullPojoAttributes = true
                         isFluentSetters = true
                         isDaos = false
                         isJavaTimeTypes = true

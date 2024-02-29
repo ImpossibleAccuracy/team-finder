@@ -1,4 +1,4 @@
-package org.teamfinder.api.api.security
+package org.teamfinder.api.config.security
 
 import graphql.kickstart.spring.webflux.GraphQLSpringWebfluxContextBuilder
 import org.springframework.boot.autoconfigure.graphql.GraphQlCorsProperties

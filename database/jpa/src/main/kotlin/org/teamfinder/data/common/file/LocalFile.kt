@@ -3,7 +3,7 @@ package org.teamfinder.data.common.file
 import jakarta.persistence.*
 import org.teamfinder.data.base.BaseAuditEntity
 
-@Entity(name = "File")
+@Entity(name = "LocalFile")
 class LocalFile(
     @Column(name = "Path", nullable = false)
     var path: String,
@@ -12,6 +12,6 @@ class LocalFile(
     var hash: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Type", nullable = false)
+    @JoinColumn(name = "TypeID", nullable = false)
     var type: LocalFileType,
 ) : BaseAuditEntity<Long>()

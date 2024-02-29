@@ -26,6 +26,10 @@ kobby {
     kotlin {
         packageName = group as String
 
+        resolver {
+            prefix = "I"
+        }
+
         scalars = mapOf(
             "Date" to typeOf("java.time", "LocalDate"),
             "DateTime" to typeOf("java.time", "LocalDateTime")

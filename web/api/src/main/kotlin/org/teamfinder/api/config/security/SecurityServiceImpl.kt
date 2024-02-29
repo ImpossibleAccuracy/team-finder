@@ -1,10 +1,10 @@
-package org.teamfinder.api.api.security
+package org.teamfinder.api.config.security
 
-import com.powerplace.web.service.account.AccountService
 import org.springframework.stereotype.Service
 import org.teamfinder.api.jwt.JwtUtils
 import org.teamfinder.api.security.auth.SecurityService
-import org.teamfinder.data.model.account.Account
+import org.teamfinder.api.service.account.AccountService
+import org.teamfinder.data.account.Account
 import kotlin.jvm.optionals.getOrNull
 
 @Service
