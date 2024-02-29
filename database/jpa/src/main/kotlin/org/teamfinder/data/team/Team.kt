@@ -12,7 +12,7 @@ class Team(
     @Column(name = "Title", nullable = false)
     var title: String,
 
-    @Column(name = "D", nullable = false, columnDefinition = "text")
+    @Column(name = "Description", nullable = false, columnDefinition = "text")
     var description: String,
 
     @Column(name = "TotalPersonAmount")
@@ -29,12 +29,12 @@ class Team(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "StatusID", nullable = false)
     var status: TeamStatus,
-
-    @ManyToMany
+) : BaseAuditEntity<Long>() {
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Game::class)
     @JoinTable(
-        name = "TeamGame",
-        joinColumns = [JoinColumn(name = "TeamId")],
-        inverseJoinColumns = [JoinColumn(name = "GameId")]
+        name = "Team_Game",
+        joinColumns = [JoinColumn(name = "TeamID")],
+        inverseJoinColumns = [JoinColumn(name = "GameID")]
     )
-    var teamGameGames: Set<Game> = HashSet(),
-) : BaseAuditEntity<Long>()
+    var teamGames: List<Game> = listOf()
+}

@@ -19,19 +19,19 @@ class Comment(
     @JoinColumn(name = "ParentCommentID")
     var parentComment: Comment?,
 
-    @ManyToMany
-    @JoinTable(
-        name = "CommentArticle",
-        joinColumns = [JoinColumn(name = "commentId")],
-        inverseJoinColumns = [JoinColumn(name = "articleId")]
-    )
-    var commentArticleArticles: Set<Article> = HashSet(),
-
-    @ManyToMany
-    @JoinTable(
-        name = "CommentGame",
-        joinColumns = [JoinColumn(name = "commentId")],
-        inverseJoinColumns = [JoinColumn(name = "gameId")]
-    )
-    var commentGameGames: Set<Game> = HashSet(),
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//        name = "CommentArticle",
+//        joinColumns = [JoinColumn(name = "commentId")],
+//        inverseJoinColumns = [JoinColumn(name = "articleId")]
+//    )
+//    var commentArticleArticles: List<Article> = listOf(),
+//
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//        name = "CommentGame",
+//        joinColumns = [JoinColumn(name = "commentId")],
+//        inverseJoinColumns = [JoinColumn(name = "gameId")]
+//    )
+//    var commentGameGames: List<Game> = listOf(),
 ) : BaseAuditEntity<Long>()

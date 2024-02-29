@@ -9,14 +9,14 @@ import org.teamfinder.data.comment.keys.CommentRatingPK
 class CommentRating(
     @MapsId("commentId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "commentID", nullable = false)
+    @JoinColumn(name = "CommentID", nullable = false)
     var comment: Comment,
 
     @MapsId("accountId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accountID", nullable = false)
+    @JoinColumn(name = "AccountID", nullable = false)
     var account: Account,
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "IsPositive", nullable = false)
     var isPositive: Boolean,
 ) : RefEntity<CommentRatingPK>()

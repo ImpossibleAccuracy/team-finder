@@ -18,11 +18,11 @@ class Role(
     @Column(name = "CreatedAt", nullable = false)
     var title: String,
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Privilege::class)
     @JoinTable(
-        name = "RolePrivilege",
-        joinColumns = [JoinColumn(name = "RoleId")],
-        inverseJoinColumns = [JoinColumn(name = "PrivilegeId")]
+        name = "Role_Privilege",
+        joinColumns = [JoinColumn(name = "RoleID")],
+        inverseJoinColumns = [JoinColumn(name = "PrivilegeID")]
     )
-    var privileges: Set<Privilege> = HashSet(),
+    var privileges: List<Privilege> = listOf(),
 )

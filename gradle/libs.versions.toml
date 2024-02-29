@@ -15,7 +15,9 @@ graphql-starter-version = "15.0.0"
 graphql-tools-version = "13.0.3"
 graphql-extended-validation-version = "21.0"
 reactive-streams-version = "1.0.4"
-junit-version = "5.8.1"
+jooq-version = "3.19.0"
+jooq-studer-version = "9.0"
+junit-version = "5.10.2"
 
 
 [libraries]
@@ -31,6 +33,7 @@ spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter",
 spring-starter-web = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-version" }
 spring-starter-security = { module = "org.springframework.boot:spring-boot-starter-security", version.ref = "spring-version" }
 spring-starter-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-version" }
+spring-starter-jooq = { module = "org.springframework.boot:spring-boot-starter-data-jooq", version.ref = "spring-version" }
 spring-starter-exposed = { module = "org.jetbrains.exposed:exposed-spring-boot-starter", version.ref = "kotlin-exposed-version" }
 spring-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "spring-version" }
 spring-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring-version" }
@@ -55,13 +58,22 @@ jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt-version"
 jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt-version" }
 jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt-version" }
 
+jooq = { module = "org.jooq:jooq", version.ref = "jooq-version" }
+jooq-meta = { module = "org.jooq:jooq-meta", version.ref = "jooq-version" }
+jooq-meta-extensions = { module = "org.jooq:jooq-meta-extensions", version.ref = "jooq-version" }
+jooq-kotlin = { module = "org.jooq:jooq-kotlin", version.ref = "jooq-version" }
+jooq-kotlin-coroutines = { module = "org.jooq:jooq-kotlin-coroutines", version.ref = "jooq-version" }
+jooq-codegen = { module = "org.jooq:jooq-codegen", version.ref = "jooq-version" }
+
 
 # --------- TESTS ----------
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin-version" }
-junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
-junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 spring-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-version" }
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-version" }
+junit-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-version" }
+junit-engine-jupiter = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 
 
 [plugins]
@@ -75,3 +87,6 @@ kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin-ver
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-version" }
 
 kobby = { id = "io.github.ermadmi78.kobby", version.ref = "kobby-version" }
+
+#jooq-gradle = { id = "nu.studer.jooq", version.ref = "gradle-jooq-version" }
+jooq-gradle = { id = "nu.studer.jooq", version.ref = "jooq-studer-version" }

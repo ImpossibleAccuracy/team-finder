@@ -6,7 +6,7 @@ import org.teamfinder.data.channel.Channel
 import org.teamfinder.data.channel.keys.ChannelSocialPK
 import org.teamfinder.data.social.Social
 
-@Entity
+@Entity(name ="Channel_Social")
 class ChannelSocial(
     @MapsId("channelId")
     @ManyToOne(fetch = FetchType.LAZY)

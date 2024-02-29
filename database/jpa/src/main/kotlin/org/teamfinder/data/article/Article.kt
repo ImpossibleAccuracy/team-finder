@@ -13,7 +13,7 @@ class Article(
     @JoinColumn(name = "CreatorID", nullable = false)
     var creator: Account,
 
-    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "article", fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     var info: ArticleInfo
 ) : BaseAuditEntity<Long>()

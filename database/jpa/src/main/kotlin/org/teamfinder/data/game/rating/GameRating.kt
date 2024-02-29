@@ -10,14 +10,14 @@ import org.teamfinder.data.game.keys.GameRatingPK
 class GameRating(
     @MapsId("gameId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gameID", nullable = false)
+    @JoinColumn(name = "GameID", nullable = false)
     var game: Game,
 
     @MapsId("accountId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accountID", nullable = false)
+    @JoinColumn(name = "AccountID", nullable = false)
     var account: Account,
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "Value", nullable = false)
     var value: Int,
 ) : RefEntity<GameRatingPK>()

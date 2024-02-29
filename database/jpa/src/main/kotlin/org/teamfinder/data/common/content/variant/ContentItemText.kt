@@ -9,7 +9,7 @@ class ContentItemText(
     @Column(name = "ID", nullable = false, updatable = false)
     var id: Long,
 
-    @Column(name = "CreatedAt", nullable = false, columnDefinition = "text")
+    @Column(name = "Text", nullable = false, columnDefinition = "text")
     var text: String,
 
     @MapsId

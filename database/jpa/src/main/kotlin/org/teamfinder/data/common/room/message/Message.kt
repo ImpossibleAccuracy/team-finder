@@ -20,11 +20,11 @@ class Message(
     @JoinColumn(name = "ParentID")
     var parent: Message?,
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = ContentItem::class)
     @JoinTable(
         name = "MessageContent",
         joinColumns = [JoinColumn(name = "MessageId")],
         inverseJoinColumns = [JoinColumn(name = "ContentItemId")]
     )
-    var contentItems: Set<ContentItem> = HashSet(),
+    var contentItems: List<ContentItem> = listOf(),
 ) : BaseAuditEntity<Long>()

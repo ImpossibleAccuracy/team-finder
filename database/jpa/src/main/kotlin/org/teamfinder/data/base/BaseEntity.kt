@@ -1,16 +1,17 @@
 package org.teamfinder.data.base
 
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.MappedSuperclass
+import jakarta.persistence.*
 import org.springframework.data.util.ProxyUtils
 
 @MappedSuperclass
 abstract class BaseEntity<T> {
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: T? = null
+    var pk: T? = null
+
+    val id: T
+        get() = pk!!
 
     override fun equals(other: Any?): Boolean {
         other ?: return false
@@ -21,14 +22,14 @@ abstract class BaseEntity<T> {
 
         other as BaseEntity<*>
 
-        return this.id != null && this.id == other.id
+        return this.pk != null && this.pk == other.pk
     }
 
     override fun hashCode(): Int {
-        return id?.hashCode() ?: 0
+        return pk?.hashCode() ?: 0
     }
 
     override fun toString(): String {
-        return "${this.javaClass.simpleName}(id=$id)"
+        return "${this.javaClass.simpleName}(id=$pk)"
     }
 }

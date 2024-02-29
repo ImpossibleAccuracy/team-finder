@@ -6,7 +6,7 @@ import org.teamfinder.data.account.keys.AccountSocialPK
 import org.teamfinder.data.base.ref.RefEntity
 import org.teamfinder.data.social.Social
 
-@Entity
+@Entity(name = "Account_Social")
 class AccountSocial(
     @MapsId("accountId")
     @ManyToOne(fetch = FetchType.LAZY)

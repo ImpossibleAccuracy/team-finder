@@ -1,11 +1,10 @@
 package org.teamfinder.data.channel
 
 import jakarta.persistence.*
-import org.teamfinder.data.base.BaseAuditEntity
+import org.teamfinder.data.base.BaseEntity
 import org.teamfinder.data.channel.meta.ChannelAdmissionPolicy
 import org.teamfinder.data.channel.meta.ChannelCategory
 import org.teamfinder.data.channel.meta.ChannelVisibility
-import org.teamfinder.data.game.Game
 
 @Entity
 class Channel(
@@ -24,15 +23,15 @@ class Channel(
     @JoinColumn(name = "AdmissionPolicyID", nullable = false)
     var admissionPolicy: ChannelAdmissionPolicy,
 
-    @OneToMany(mappedBy = "id")
+    @OneToOne(mappedBy = "channel")
     @PrimaryKeyJoinColumn
     var info: ChannelInfo,
 
-    @ManyToMany
-    @JoinTable(
-        name = "ChannelGame",
-        joinColumns = [JoinColumn(name = "ChannelId")],
-        inverseJoinColumns = [JoinColumn(name = "GameId")]
-    )
-    var channelGames: Set<Game> = HashSet(),
-) : BaseAuditEntity<Long>()
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//        name = "ChannelGame",
+//        joinColumns = [JoinColumn(name = "ChannelId")],
+//        inverseJoinColumns = [JoinColumn(name = "GameId")]
+//    )
+//    var channelGames: List<Game> = listOf(),
+) : BaseEntity<Long>()

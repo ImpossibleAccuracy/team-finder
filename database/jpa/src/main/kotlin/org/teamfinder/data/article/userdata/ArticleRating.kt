@@ -18,6 +18,6 @@ class ArticleRating(
     @JoinColumn(name = "AccountID", nullable = false)
     var account: Account,
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "Value", nullable = false)
     var value: Int,
 ) : RefEntity<ArticleRatingPK>()

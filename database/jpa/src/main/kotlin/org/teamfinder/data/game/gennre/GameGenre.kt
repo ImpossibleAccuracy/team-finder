@@ -5,18 +5,18 @@ import org.teamfinder.data.base.ref.RefEntity
 import org.teamfinder.data.game.Game
 import org.teamfinder.data.game.keys.GameGenrePK
 
-@Entity
+@Entity(name = "Game_Genre")
 class GameGenre(
     @Column(name = "Order", nullable = false)
     var order: Int,
 
     @MapsId("gameId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gameID", nullable = false)
+    @JoinColumn(name = "GameID", nullable = false)
     var game: Game,
 
     @MapsId("genreId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "genreID", nullable = false)
+    @JoinColumn(name = "GenreID", nullable = false)
     var genre: Genre,
 ) : RefEntity<GameGenrePK>()

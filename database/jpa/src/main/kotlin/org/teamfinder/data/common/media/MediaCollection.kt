@@ -10,6 +10,6 @@ class MediaCollection(
     @JoinColumn(name = "CreatorID", nullable = false)
     var creator: Account,
 
-    @OneToMany(mappedBy = "mediaCollection")
-    var items: Set<MediaCollectionItem> = HashSet(),
+    @OneToMany(mappedBy = "mediaCollection", targetEntity = MediaCollectionItem::class)
+    var items: List<MediaCollectionItem> = listOf(),
 ) : BaseAuditEntity<Long>()

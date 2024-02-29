@@ -7,27 +7,27 @@ import org.teamfinder.data.common.media.MediaCollection
 
 @Entity
 class Game(
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "Title", nullable = false)
     var title: String,
 
-    @Column(name = "createdAt", nullable = false, columnDefinition = "text")
+    @Column(name = "Description", nullable = false, columnDefinition = "text")
     var description: String,
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "CreatorStudioName", nullable = false)
     var creatorStudioName: String,
 
-    @Column(name = "createdAt", nullable = false)
-    var validated: Boolean,
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "creatorID", nullable = false)
+    @JoinColumn(name = "CreatorID", nullable = false)
     var creator: Account,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "media_collectionID", nullable = false)
+    @JoinColumn(name = "MediaCollectionID", nullable = false)
     var mediaCollection: MediaCollection,
 
+    @Column(name = "Validated", nullable = false)
+    var validated: Boolean,
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "validated_byID")
+    @JoinColumn(name = "ValidatedBy")
     var validatedBy: Account,
 ) : BaseAuditEntity<Long>()

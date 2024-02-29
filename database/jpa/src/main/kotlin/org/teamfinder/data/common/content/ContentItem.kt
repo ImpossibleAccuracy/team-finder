@@ -1,53 +1,50 @@
 package org.teamfinder.data.common.content
 
-import jakarta.persistence.*
-import org.teamfinder.data.article.content.ArticleContent
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 import org.teamfinder.data.base.BaseEntity
-import org.teamfinder.data.channel.invite.ChannelInvite
-import org.teamfinder.data.common.content.variant.ContentItemQuote
-import org.teamfinder.data.common.content.variant.ContentItemText
-import org.teamfinder.data.common.file.LocalFile
-import org.teamfinder.data.common.media.MediaCollection
 
 @Entity
 class ContentItem(
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "subject_typeID", nullable = false)
+    @JoinColumn(name = "SubjectTypeID", nullable = false)
     var subjectType: ContentItemType,
 
-    @OneToOne(mappedBy = "id")
-    @PrimaryKeyJoinColumn
-    var contentItemText: ContentItemText?,
-
-    @OneToOne(mappedBy = "id")
-    @PrimaryKeyJoinColumn
-    var contentItemQuote: ContentItemQuote?,
-
     // TODO
-    @ManyToMany
-    @JoinTable(
-        name = "ContentItemInvite",
-        joinColumns = [JoinColumn(name = "contentItemId")],
-        inverseJoinColumns = [JoinColumn(name = "channelInviteId")]
-    )
-    var contentItemInviteChannelInvites: Set<ChannelInvite> = HashSet(),
+//    @OneToOne(mappedBy = "id")
+//    @PrimaryKeyJoinColumn
+//    var contentItemText: ContentItemText?,
+//
+//    @OneToOne(mappedBy = "id")
+//    @PrimaryKeyJoinColumn
+//    var contentItemQuote: ContentItemQuote?,
 
-    @ManyToMany
-    @JoinTable(
-        name = "ContentItemMedia",
-        joinColumns = [JoinColumn(name = "contentItemId")],
-        inverseJoinColumns = [JoinColumn(name = "mediaCollectionId")]
-    )
-    var contentItemMediaMediaCollections: Set<MediaCollection> = HashSet(),
-
-    @ManyToMany
-    @JoinTable(
-        name = "ContentItemFile",
-        joinColumns = [JoinColumn(name = "contentItemId")],
-        inverseJoinColumns = [JoinColumn(name = "fileId")]
-    )
-    var contentItemFileFiles: Set<LocalFile> = HashSet(),
-
-    @OneToMany(mappedBy = "contentItem")
-    var contentItemArticleContents: Set<ArticleContent> = HashSet(),
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//        name = "ContentItemInvite",
+//        joinColumns = [JoinColumn(name = "contentItemId")],
+//        inverseJoinColumns = [JoinColumn(name = "channelInviteId")]
+//    )
+//    var contentItemInviteChannelInvites: List<ChannelInvite> = listOf(),
+//
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//        name = "ContentItemMedia",
+//        joinColumns = [JoinColumn(name = "contentItemId")],
+//        inverseJoinColumns = [JoinColumn(name = "mediaCollectionId")]
+//    )
+//    var contentItemMediaMediaCollections: List<MediaCollection> = listOf(),
+//
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//        name = "ContentItemFile",
+//        joinColumns = [JoinColumn(name = "contentItemId")],
+//        inverseJoinColumns = [JoinColumn(name = "fileId")]
+//    )
+//    var contentItemFileFiles: List<LocalFile> = listOf(),
+//
+//    @OneToMany(mappedBy = "contentItem")
+//    var contentItemArticleContents: List<ArticleContent> = listOf(),
 ) : BaseEntity<Long>()
